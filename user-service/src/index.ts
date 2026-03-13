@@ -1,12 +1,23 @@
 import express from "express";
-const app = express();
+import cors from "cors";
+import dotenv from "dotenv";
 
-const port = process.env.port || 4000;
+dotenv.config();
+
+const app = express();
+const port = process.env.PORT || 4003;
+
+app.use(cors());
+app.use(express.json());
 
 app.get ("/",(req, res)=>{
-    res.send ("Server is working")
+    res.send ("User Service is working")
 })
 
+app.get("/health", (req, res) => {
+    res.json({ status: "healthy" });
+});
+
 app.listen (port, ()=>{
-    console.log (`Server is running at http://localhost:${port}`)
+    console.log (`User Service is running at http://localhost:${port}`)
 })
