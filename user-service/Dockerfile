@@ -9,7 +9,6 @@ RUN bun install
 
 COPY . .
 
-# Generate Prisma client
 RUN bun run prisma:generate
 
 EXPOSE 4003
